@@ -1,6 +1,6 @@
 require 'pry'
 
-def data
+data =
   {
      "season 19":[
         {
@@ -2026,7 +2026,7 @@ def data
            "status":"Week 1"
         },
         {
-           "name":"Carissa Ilburg",
+           "full name":"Carissa Ilburg",
            "age":"25",
            "hometown":"Cattaraugus, NY",
            "occupation":"Attorney",
@@ -2055,7 +2055,7 @@ def data
         }
      ]
   }
-end
+
 
 def get_first_name_of_season_winner(data, season)
   data[season].each do |contestant|
@@ -2064,6 +2064,7 @@ def get_first_name_of_season_winner(data, season)
     end
   end
 end
+
 
 def get_contestant_name(data, occupation)
   data.each do |season, contestants|
@@ -2077,18 +2078,34 @@ end
 
 
 
-def count_contestants_by_hometown(data, hometown)
-  # code here
-  count = []
-  data.each do |season, contestants|
-    contestants.each do |contestant|
-      if contestant["hometown"] == hometown
-        count<<contestant["name"]
+
+# def count_contestants_by_hometown(data, hometown)
+#   # code here
+#   count = []
+#   data.each do |season, contestants|
+#     contestants.each do |contestant|
+#       if contestant["hometown"] == hometown
+#         count<<contestant["name"]
+#       end
+#     end
+#   end
+#   count.length
+# end
+
+
+def count_contestants_by_hometown(data, string)
+    counter=0
+    data.each do |season, contestants|
+      contestants.each do |contestant|
+        if contestant[:hometown] == string
+          counter +=1
+        end
       end
     end
-  end
-  count.length
+    counter
 end
+
+
 
 def get_occupation(data, hometown)
   # code here
@@ -2110,3 +2127,8 @@ def get_average_age_for_season(data, season)
   end
   (age_total / num_of_contestants.to_f).round(0)
 end
+
+
+# puts count_contestants_by_hometown(data, "Great Falls, Virginia")
+
+puts data
